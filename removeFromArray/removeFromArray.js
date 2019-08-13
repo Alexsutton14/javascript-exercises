@@ -1,23 +1,25 @@
-const removeFromArray = function(inputArray, target1, target2, target3) {
-    removeItem(inputArray, target1);
-    console.log(target1);
-    if(target2 != null){
-        removeItem(inputArray, target2);
+const removeFromArray = function(inputArray, target1, target2, target3, target4) {
+    let outputArray = removeItem(inputArray, target1);
+    if(target2 != undefined){
+        removeItem(outputArray, target2);
     }
-    if(target3 != null){
-        removeItem(inputArray, target3);
+    if(target3 != undefined){
+        removeItem(outputArray, target3);
     }
+    if(target4 != undefined){
+        removeItem(outputArray, target4);
+    }
+    return outputArray;
 }
 function removeItem (inputArray, target){
     let i = 0;
-    let finalIndex = inputArray.length - 1;
-    while(i<= finalIndex){
+    let output;
+    for(i=0; i<inputArray.length; i++){
         if(inputArray[i] === target){
             inputArray.splice(i, 1);
-            break;
         }
-        i++
     }
+    return inputArray;
 }
 
 module.exports = removeFromArray
