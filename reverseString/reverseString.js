@@ -4,7 +4,7 @@ const reverseString = function(inputString) {
     while(currentIndex >= 0){
         let currentChar = inputString.charAt(currentIndex);
         currentIndex--;
-        outputString + currentChar;
+        outputString += currentChar;
     }
     return outputString;
 }
