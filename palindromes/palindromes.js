@@ -1,11 +1,14 @@
-const palindromes = function(inputString) {
-    console.log(`Input string: ${inputString}`);
-    let reversedString = reverseString(inputString);
-    if (reversedString === inputString){
-        return true;
-    } else {
-        return false;
+const cleanString = function(inputString){
+    let outputString = "";
+    let currentChar;
+    for(let i=0; i < inputString.length; i++){
+        currentChar = inputString.charAt(i);
+        if(currentChar.match(/[A-Za-z]/)){
+            outputString += currentChar;
+        }
     }
+    outputString = outputString.toLowerCase();
+    return outputString;
 }
 
 const reverseString = function(inputString) {
@@ -14,10 +17,21 @@ const reverseString = function(inputString) {
     while(currentIndex >= 0){
         let currentChar = inputString.charAt(currentIndex);
         currentIndex--;
-        outputString + currentChar;
+        outputString += currentChar;
     }
-    console.log(`Reversed string: ${outputString}`);
     return outputString;
 }
 
+function palindromes(inputString) {
+    //cleans string of punctuation, spaces and capital letters
+    let cleanedString = cleanString(inputString);
+    //generates reversed string
+    let reversedString = reverseString(cleanedString);
+    //compares strings
+    if (reversedString === cleanedString){
+        return true;
+    } else {
+        return false;
+    }
+}
 module.exports = palindromes
